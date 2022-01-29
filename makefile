@@ -1,6 +1,6 @@
 #
-# Copyright 2011-2021 Branimir Karadzic. All rights reserved.
-# License: https://github.com/bkaradzic/bgfx#license-bsd-2-clause
+# Copyright 2011-2022 Branimir Karadzic. All rights reserved.
+# License: https://github.com/bkaradzic/bgfx/blob/master/LICENSE
 #
 
 UNAME := $(shell uname)
@@ -14,6 +14,11 @@ else
 OS=linux
 endif
 endif
+
+help:
+	@echo Available targets:
+	@grep -E "^[a-zA-Z0-9_-]+:.*?## .*$$" $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
 else
 OS=windows
 
@@ -28,10 +33,6 @@ GENIE?=$(BX_DIR)/tools/bin/$(OS)/genie $(EXTRA_GENIE_ARGS)
 NINJA?=$(BX_DIR)/tools/bin/$(OS)/ninja
 
 .PHONY: help
-
-help:
-	@echo Available targets:
-	@grep -E "^[a-zA-Z0-9_-]+:.*?## .*$$" $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 clean: ## Clean all intermediate files.
 	@echo Cleaning...

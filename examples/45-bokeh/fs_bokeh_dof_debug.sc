@@ -2,7 +2,7 @@ $input v_texcoord0
 
 /*
 * Copyright 2021 elven cache. All rights reserved.
-* License: https://github.com/bkaradzic/bgfx#license-bsd-2-clause
+* License: https://github.com/bkaradzic/bgfx/blob/master/LICENSE
 */
 
 #include "../common/common.sh"
@@ -18,6 +18,7 @@ void main()
 
 	// desaturate color to make tinted color stand out
 	vec3 color = texture2D(s_color, texCoord).xyz;
+	color = toGamma(color);
 	color = vec3_splat(dot(color, vec3(0.33, 0.34, 0.33)));
 
 	// get circle of confusion from depth

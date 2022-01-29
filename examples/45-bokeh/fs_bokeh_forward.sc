@@ -2,7 +2,7 @@ $input v_normal, v_texcoord0, v_texcoord1, v_texcoord2
 
 /*
 * Copyright 2021 elven cache. All rights reserved.
-* License: https://github.com/bkaradzic/bgfx#license-bsd-2-clause
+* License: https://github.com/bkaradzic/bgfx/blob/master/LICENSE
 */
 
 #include "../common/common.sh"
@@ -73,7 +73,8 @@ void main()
 
 	float lightAmount = ambient + diffuse;
 	vec3 color = u_color * albedo * lightAmount + specular;
-	color = toGamma(color);
+
+	// leave color in linear space for better dof filter result
 
 	gl_FragColor = vec4(color, 1.0);
 }

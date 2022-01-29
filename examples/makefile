@@ -1,6 +1,6 @@
 #
-# Copyright 2011-2021 Branimir Karadzic. All rights reserved.
-# License: https://github.com/bkaradzic/bgfx#license-bsd-2-clause
+# Copyright 2011-2022 Branimir Karadzic. All rights reserved.
+# License: https://github.com/bkaradzic/bgfx/blob/master/LICENSE
 #
 
 all:
@@ -25,14 +25,17 @@ all:
 	@make -s --no-print-directory build -C 19-oit
 #embedded @make -s --no-print-directory build -C 20-nanovg
 	@make -s --no-print-directory build -C 21-deferred
+#reused	@make -s --no-print-directory build -C 22-windows
 	@make -s --no-print-directory build -C 23-vectordisplay
 	@make -s --no-print-directory build -C 24-nbody
 #reused @make -s --no-print-directory build -C 25-c99
 #reused @make -s --no-print-directory build -C 26-occlusion
 	@make -s --no-print-directory build -C 27-terrain
 	@make -s --no-print-directory build -C 28-wireframe
+#reused @make -s --no-print-directory build -C 29-debugdraw
 	@make -s --no-print-directory build -C 30-picking
 	@make -s --no-print-directory build -C 31-rsm
+#reused	@make -s --no-print-directory build -C 32-particles
 	@make -s --no-print-directory build -C 33-pom
 #reused @make -s --no-print-directory build -C 34-mvs
 #reused @make -s --no-print-directory build -C 35-dynamic
@@ -41,7 +44,12 @@ all:
 	@make -s --no-print-directory build -C 38-bloom
 #	@make -s --no-print-directory build -C 39-assao
 	@make -s --no-print-directory build -C 40-svt
+	@make -s --no-print-directory build -C 41-tess
 	@make -s --no-print-directory build -C 42-bunnylod
+	@make -s --no-print-directory build -C 43-denoise
+	@make -s --no-print-directory build -C 44-sss
+	@make -s --no-print-directory build -C 45-bokeh
+	@make -s --no-print-directory build -C 46-fsr
 
 rebuild:
 	@make -s --no-print-directory rebuild -C 01-cubes
@@ -65,14 +73,17 @@ rebuild:
 	@make -s --no-print-directory rebuild -C 19-oit
 #embedded @make -s --no-print-directory rebuild -C 20-nanovg
 	@make -s --no-print-directory rebuild -C 21-deferred
+#reused	@make -s --no-print-directory rebuild -C 22-windows
 	@make -s --no-print-directory rebuild -C 23-vectordisplay
 	@make -s --no-print-directory rebuild -C 24-nbody
 #reused @make -s --no-print-directory rebuild -C 25-c99
 #reused @make -s --no-print-directory rebuild -C 26-occlusion
 	@make -s --no-print-directory rebuild -C 27-terrain
 	@make -s --no-print-directory rebuild -C 28-wireframe
+#reused @make -s --no-print-directory rebuild -C 29-debugdraw
 	@make -s --no-print-directory rebuild -C 30-picking
 	@make -s --no-print-directory rebuild -C 31-rsm
+#reused	@make -s --no-print-directory rebuild -C 32-particles
 	@make -s --no-print-directory rebuild -C 33-pom
 #reused @make -s --no-print-directory rebuild -C 34-mvs
 #reused @make -s --no-print-directory rebuild -C 35-dynamic
@@ -81,7 +92,12 @@ rebuild:
 	@make -s --no-print-directory rebuild -C 38-bloom
 #	@make -s --no-print-directory rebuild -C 39-assao
 	@make -s --no-print-directory rebuild -C 40-svt
+	@make -s --no-print-directory rebuild -C 41-tess
 	@make -s --no-print-directory rebuild -C 42-bunnylod
+	@make -s --no-print-directory rebuild -C 43-denoise
+	@make -s --no-print-directory rebuild -C 44-sss
+	@make -s --no-print-directory rebuild -C 45-bokeh
+	@make -s --no-print-directory rebuild -C 46-fsr
 
 rebuild-embedded:
 	@make -s --no-print-directory rebuild -C 02-metaballs

@@ -1,6 +1,6 @@
 /*
 * Copyright 2021 elven cache. All rights reserved.
-* License: https://github.com/bkaradzic/bgfx#license-bsd-2-clause
+* License: https://github.com/bkaradzic/bgfx/blob/master/LICENSE
 */
 
 /*
@@ -417,7 +417,7 @@ public:
 			m_lightModel.position[2] = bx::sin(m_lightRotation) * 3.0f;
 
 			// Update camera
-			cameraUpdate(deltaTime*0.15f, m_mouseState);
+			cameraUpdate(deltaTime*0.15f, m_mouseState, ImGui::MouseOverArea() );
 
 			// Set up matrices for gbuffer
 			cameraGetViewMtx(m_view);

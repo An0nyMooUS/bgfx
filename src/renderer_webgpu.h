@@ -1,6 +1,6 @@
 /*
  * Copyright 2011-2019 Branimir Karadzic. All rights reserved.
- * License: https://github.com/bkaradzic/bgfx#license-bsd-2-clause
+ * License: https://github.com/bkaradzic/bgfx/blob/master/LICENSE
  */
 
 #ifndef BGFX_RENDERER_WEBGPU_H_HEADER_GUARD
@@ -32,7 +32,6 @@
 		BGFX_PROFILER_END();       \
 	BX_MACRO_BLOCK_END
 
-#define WEBGPU_MAX_FRAMES_IN_FLIGHT 3
 #define WEBGPU_NUM_UNIFORM_BUFFERS  8
 
 namespace bgfx { namespace webgpu
@@ -220,17 +219,17 @@ namespace bgfx { namespace webgpu
 
 		wgpu::RenderPassDescriptor desc;
 
-		wgpu::RenderPassColorAttachmentDescriptor colorAttachments[kMaxColorAttachments];
-		wgpu::RenderPassDepthStencilAttachmentDescriptor depthStencilAttachment;
+		wgpu::RenderPassColorAttachment colorAttachments[kMaxColorAttachments];
+		wgpu::RenderPassDepthStencilAttachment depthStencilAttachment;
 	};
 
 	struct VertexStateDescriptor
 	{
 		VertexStateDescriptor();
 
-		wgpu::VertexStateDescriptor desc;
+		wgpu::VertexState desc;
 
-		wgpu::VertexBufferLayoutDescriptor vertexBuffers[kMaxVertexInputs];
+		wgpu::VertexBufferLayoutDescriptor buffers[kMaxVertexInputs];
 		wgpu::VertexAttributeDescriptor attributes[kMaxVertexAttributes];
 	};
 
@@ -238,16 +237,13 @@ namespace bgfx { namespace webgpu
 	{
 		RenderPipelineDescriptor();
 
-		wgpu::RenderPipelineDescriptor desc;
+		wgpu::RenderPipelineDescriptor2 desc;
 
-		//wgpu::ProgrammableStageDescriptor vertexStage;
-		wgpu::ProgrammableStageDescriptor fragmentStage;
+		wgpu::FragmentState fragment;
+		wgpu::DepthStencilState depthStencil;
 
-		wgpu::VertexStateDescriptor inputState;
-
-		wgpu::RasterizationStateDescriptor rasterizationState;
-		wgpu::DepthStencilStateDescriptor depthStencilState;
-		wgpu::ColorStateDescriptor colorStates[kMaxColorAttachments];
+		wgpu::ColorTargetState targets[kMaxColorAttachments];
+		wgpu::BlendState blends[kMaxColorAttachments];
 	};
 
 	struct BindingsWgpu
@@ -501,7 +497,7 @@ namespace bgfx { namespace webgpu
 		int m_releaseReadIndex = 0;
 
 		typedef stl::vector<wgpu::Buffer> ResourceArray;
-		ResourceArray m_release[WEBGPU_MAX_FRAMES_IN_FLIGHT];
+		ResourceArray m_release[BGFX_CONFIG_MAX_FRAME_LATENCY];
 	};
 
 	struct TimerQueryWgpu

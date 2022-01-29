@@ -1,6 +1,6 @@
 /*
  * Copyright 2019 Daniel Gavin. All rights reserved.
- * License: https://github.com/bkaradzic/bgfx#license-bsd-2-clause
+ * License: https://github.com/bkaradzic/bgfx/blob/master/LICENSE
  */
 
  /*
@@ -17,7 +17,6 @@
 #include <bx/math.h>
 
 #include "bgfx_utils.h"
-#include "bounds.h"
 #include "camera.h"
 #include "common.h"
 #include "imgui/imgui.h"

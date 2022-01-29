@@ -5,13 +5,24 @@
 [bgfx](https://github.com/bkaradzic/bgfx) - Cross-platform rendering library
 ============================================================================
 
-[![Build Status](https://travis-ci.com/bkaradzic/bgfx.svg?branch=master)](https://travis-ci.com/bkaradzic/bgfx)
+<p align="center">
+    <a href="#what-is-it">What is it?</a> -
+    <a href="https://bkaradzic.github.io/bgfx/build.html">Building</a> -
+    <a href="https://bkaradzic.github.io/bgfx/overview.html#getting-involved">Getting Involved</a> -
+    <a href="https://bkaradzic.github.io/bgfx/examples.html">Examples</a> -
+    <a href="https://bkaradzic.github.io/bgfx/bgfx.html">API Reference</a> -
+    <a href="https://bkaradzic.github.io/bgfx/tools.html">Tools</a> -
+    <a href="#who-is-using-it-madewithbgfx">Who is using it?</a> -
+    <a href="#license-bsd-2-clause">License</a>
+</p>
+
 [![Build status](https://ci.appveyor.com/api/projects/status/ipa3ojgeaet1oko5?svg=true)](https://ci.appveyor.com/project/bkaradzic/bgfx)
 [![License](https://img.shields.io/badge/license-BSD--2%20clause-blue.svg)](https://bkaradzic.github.io/bgfx/license.html)
 [![Join the chat at https://discord.gg/9eMbv7J](https://img.shields.io/discord/712512073522872352?color=%237289DA&label=bgfx&logo=discord&logoColor=white)](https://discord.gg/9eMbv7J)
 
  * [GitHub Discussions](https://github.com/bkaradzic/bgfx/discussions)
  * [Discord Chat](https://discord.gg/9eMbv7J)
+ * [AppVeyor CI](https://ci.appveyor.com/project/bkaradzic/bgfx)
 
 [What is it?](https://bkaradzic.github.io/bgfx/overview.html)
 -------------------------------------------------------------
@@ -70,26 +81,9 @@ Languages:
  * [Pascal language API bindings](https://github.com/Akira13641/PasBGFX)
  * [Python language API bindings #1](https://github.com/fbertola/bgfx-python#-----bgfx-python--)
  * [Python language API bindings #2](https://github.com/jnadro/pybgfx#pybgfx)
- * [Rust language API bindings](https://github.com/rhoot/bgfx-rs)
+ * [Rust language API bindings (obsolete)](https://github.com/rhoot/bgfx-rs)
+ * [Rust language API bindings (new)](https://github.com/emoon/bgfx-rs)
  * [Swift language API bindings](https://github.com/stuartcarnie/SwiftBGFX)
-
-[Building](https://bkaradzic.github.io/bgfx/build.html)
-----------------------------------------------------
-
- - AppVeyor https://ci.appveyor.com/project/bkaradzic/bgfx
- - TravisCI https://travis-ci.com/bkaradzic/bgfx
-
-[Getting involved](https://bkaradzic.github.io/bgfx/overview.html#getting-involved)
------------------------------------------------------------------------------------
-
-[Examples](https://bkaradzic.github.io/bgfx/examples.html)
-----------------------------------------------------------
-
-[API Reference](https://bkaradzic.github.io/bgfx/bgfx.html)
------------------------------------------------------------
-
-[Tools](https://bkaradzic.github.io/bgfx/tools.html)
-----------------------------------------------------
 
 Who is using it? [#madewithbgfx](https://twitter.com/search?q=%23madewithbgfx&f=live)
 -------------------------------------------------------------------------------------
@@ -456,6 +450,44 @@ https://codenamesgame.com/
 
 ![Codenames](https://codenamesgame.com/img/game-features-img-1.jpg)
 
+## PeakFinder
+
+PeakFinder shows the names of all mountains and peaks with a 360° panorama display.
+More than 850'000 peaks - from Mount Everest to the little hill around the corner.
+
+https://www.peakfinder.org/
+
+![PeakFinder](https://pfweb-c125.kxcdn.com/images/mobile/cards//en/cameramode.jpg)
+
+## Ember Sword
+
+Ember Sword is a free to play MMORPG running directly in your browser and is
+being developed and published by Bright Star Studios.
+
+https://embersword.com
+
+![Ember-Sword-ConceptArt5](https://user-images.githubusercontent.com/814772/120714133-a860ca80-c477-11eb-8680-f5a948dfd050.png)
+
+## Off The Road Unleashed
+
+Off The Road Unleashed is a sandbox driving game for the Nintendo Switch.  
+If you see a vehicle you bet you can hop into it! Pilot big rigs, helicopters, boats, airplanes or even trains. Sand dunes, frozen plains, mountains to climb and conquer.
+
+https://www.nintendo.com/games/detail/off-the-road-unleashed-switch/
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=cwDR0Wj3LO4" 
+target="_blank"><img src="http://img.youtube.com/vi/cwDR0Wj3LO4/0.jpg" 
+alt="Off The Road Unleashed"
+width="640" height="480" border="0" /></a>
+
+## Guild Wars 2
+
+Guild Wars 2 is an online role-playing game with fast-paced action combat, a rich and detailed universe of stories, awe-inspiring landscapes to explore, two challenging player vs. player modes—and no subscription fees!
+
+https://www.guildwars2.com/
+
+![Guild-Wars-2-wallpaper](https://d3b4yo2b5lbfy.cloudfront.net/wp-content/uploads/wallpapers/GuildWars2-01-800x600.jpg)
+
 [License (BSD 2-clause)](https://bkaradzic.github.io/bgfx/license.html)
 -----------------------------------------------------------------------
 
@@ -463,7 +495,7 @@ https://codenamesgame.com/
 <img align="right" src="http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png">
 </a>
 
-	Copyright 2010-2021 Branimir Karadzic
+	Copyright 2010-2022 Branimir Karadzic
 	
 	Redistribution and use in source and binary forms, with or without modification,
 	are permitted provided that the following conditions are met:

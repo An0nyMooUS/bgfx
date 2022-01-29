@@ -10,7 +10,7 @@ public import core.stdc.stdarg : va_list;
 
 extern(C) @nogc nothrow:
 
-enum uint BGFX_API_VERSION = 112;
+enum uint BGFX_API_VERSION = 115;
 
 alias bgfx_view_id_t = ushort;
 
@@ -197,7 +197,7 @@ enum ubyte BGFX_DISCARD_NONE = 0x00; /// Preserve everything.
 enum ubyte BGFX_DISCARD_BINDINGS = 0x01; /// Discard texture sampler and buffer bindings.
 enum ubyte BGFX_DISCARD_INDEX_BUFFER = 0x02; /// Discard index buffer.
 enum ubyte BGFX_DISCARD_INSTANCE_DATA = 0x04; /// Discard instance data.
-enum ubyte BGFX_DISCARD_STATE = 0x08; /// Discard state.
+enum ubyte BGFX_DISCARD_STATE = 0x08; /// Discard state and uniform bindings.
 enum ubyte BGFX_DISCARD_TRANSFORM = 0x10; /// Discard transform.
 enum ubyte BGFX_DISCARD_VERTEX_STREAMS = 0x20; /// Discard vertex streams.
 enum ubyte BGFX_DISCARD_ALL = 0xff; /// Discard all states.
@@ -211,7 +211,7 @@ enum uint BGFX_DEBUG_WIREFRAME = 0x00000001; /// Enable wireframe for all primit
 enum uint BGFX_DEBUG_IFH = 0x00000002;
 enum uint BGFX_DEBUG_STATS = 0x00000004; /// Enable statistics display.
 enum uint BGFX_DEBUG_TEXT = 0x00000008; /// Enable debug text display.
-enum uint BGFX_DEBUG_PROFILER = 0x00000010; /// Enable profiler.
+enum uint BGFX_DEBUG_PROFILER = 0x00000010; /// Enable profiler. This causes per-view statistics to be collected, available through `bgfx::Stats::ViewStats`. This is unrelated to the profiler functions in `bgfx::CallbackI`.
 
 enum ushort BGFX_BUFFER_COMPUTE_FORMAT_8X1 = 0x0001; /// 1 8-bit value
 enum ushort BGFX_BUFFER_COMPUTE_FORMAT_8X2 = 0x0002; /// 2 8-bit values
@@ -401,8 +401,10 @@ enum ubyte BGFX_RESOLVE_AUTO_GEN_MIPS = 0x01; /// Auto-generate mip maps on reso
 enum ushort BGFX_PCI_ID_NONE = 0x0000; /// Autoselect adapter.
 enum ushort BGFX_PCI_ID_SOFTWARE_RASTERIZER = 0x0001; /// Software rasterizer.
 enum ushort BGFX_PCI_ID_AMD = 0x1002; /// AMD adapter.
+enum ushort BGFX_PCI_ID_APPLE = 0x106b; /// Apple adapter.
 enum ushort BGFX_PCI_ID_INTEL = 0x8086; /// Intel adapter.
 enum ushort BGFX_PCI_ID_NVIDIA = 0x10de; /// nVidia adapter.
+enum ushort BGFX_PCI_ID_MICROSOFT = 0x1414; /// Microsoft adapter.
 
 enum ubyte BGFX_CUBE_MAP_POSITIVE_X = 0x00; /// Cubemap +x.
 enum ubyte BGFX_CUBE_MAP_NEGATIVE_X = 0x01; /// Cubemap -x.
@@ -427,6 +429,7 @@ enum bgfx_fatal_t
 enum bgfx_renderer_type_t
 {
 	BGFX_RENDERER_TYPE_NOOP, /// No rendering.
+	BGFX_RENDERER_TYPE_AGC, /// AGC
 	BGFX_RENDERER_TYPE_DIRECT3D9, /// Direct3D 9.0
 	BGFX_RENDERER_TYPE_DIRECT3D11, /// Direct3D 11.0
 	BGFX_RENDERER_TYPE_DIRECT3D12, /// Direct3D 12.0
@@ -644,7 +647,7 @@ enum bgfx_topology_t
 enum bgfx_topology_convert_t
 {
 	BGFX_TOPOLOGY_CONVERT_TRILISTFLIPWINDING, /// Flip winding order of triangle list.
-	BGFX_TOPOLOGY_CONVERT_TRISTRIPFLIPWINDING, /// Flip winding order of trinagle strip.
+	BGFX_TOPOLOGY_CONVERT_TRISTRIPFLIPWINDING, /// Flip winding order of triangle strip.
 	BGFX_TOPOLOGY_CONVERT_TRILISTTOLINELIST, /// Convert triangle list to line list.
 	BGFX_TOPOLOGY_CONVERT_TRISTRIPTOTRILIST, /// Convert triangle strip to triangle list.
 	BGFX_TOPOLOGY_CONVERT_LINESTRIPTOLINELIST, /// Convert line strip to line list.
@@ -736,7 +739,7 @@ struct bgfx_caps_t
 
 	/**
 	 * Supported functionality.
-	 *   @attention See BGFX_CAPS_* flags at https://bkaradzic.github.io/bgfx/bgfx.html#available-caps
+	 *   @attention See `BGFX_CAPS_*` flags at https://bkaradzic.github.io/bgfx/bgfx.html#available-caps
 	 */
 	ulong supported;
 	ushort vendorId; /// Selected GPU vendor PCI id.
@@ -854,6 +857,7 @@ struct bgfx_init_t
 	 * matching id.
 	 */
 	ushort deviceId;
+	ulong capabilities; /// Capabilities initialization mask (default: UINT64_MAX).
 	bool debug_; /// Enable device for debuging.
 	bool profile; /// Enable device for profiling.
 	bgfx_platform_data_t platformData; /// Platform data.
@@ -941,7 +945,7 @@ struct bgfx_uniform_info_t
 /// Frame buffer texture attachment info.
 struct bgfx_attachment_t
 {
-	bgfx_access_t access; /// Attachement access. See `Access::Enum`.
+	bgfx_access_t access; /// Attachment access. See `Access::Enum`.
 	bgfx_texture_handle_t handle; /// Render target texture handle.
 	ushort mip; /// Mip level.
 	ushort layer; /// Cubemap side or depth layer/slice to use.
